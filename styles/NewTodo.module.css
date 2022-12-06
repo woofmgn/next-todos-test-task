@@ -1,0 +1,32 @@
+.inputWrapper {
+  display: flex;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.completeAll {
+  margin-left: 20px;
+  display: flex;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+  background-image: url('../public/down_icon.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.input {
+  padding: 0 0 0 15px;
+  margin: 0;
+  border: none;
+  max-width: 600px;
+  width: 100%;
+  height: 40px;
+  background-color: #FFF;
+  color: #000;
+  outline: none;
+
+}
