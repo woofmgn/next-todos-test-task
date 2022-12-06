@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  padding: 10px 0;
+  justify-content: space-between;
+  max-width: 600px;
+  width: 100%;
+  background-color: #FFF;
+}
+
+.counter {
+  margin: 0;
+  padding: 0 0 0 14px;
+  font-family: 'Inter';
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+}
+
+.navItem {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Inter';
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  /* color: #000; */
+}
+
+.deleteTask {
+  margin: 0;
+  padding: 0 14px 0 0;
+  font-family: 'Inter';
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  color: #000;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
