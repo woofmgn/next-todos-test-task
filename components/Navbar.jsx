@@ -18,7 +18,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/complete" className={styles.link}>
+            <Link href="/completed" className={styles.link}>
               Complete
             </Link>
           </li>

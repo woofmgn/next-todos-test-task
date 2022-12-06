@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NewTodo from "../components/NewTodo";
@@ -6,6 +7,15 @@ import TodosList from "../components/TodosList";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("todos"));
+    if (items) {
+      setData(items);
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,8 +25,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.wrapper}>
-          <NewTodo />
-          <TodosList />
+          <NewTodo setData={setData} data={data} />
+          <TodosList data={data} />
         </div>
         <Navbar />
       </main>

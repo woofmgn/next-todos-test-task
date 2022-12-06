@@ -1,29 +1,12 @@
 import styles from "../styles/TodosList.module.css";
+import Todo from "./Todo";
 
-const TodosList = () => {
+const TodosList = ({ data }) => {
   return (
     <ul className={styles.todosList}>
-      <li className={styles.todosItem}>
-        <span className={styles.status}></span>
-        <div className={styles.taskWrapper}>
-          <input className={styles.task} type="text" />
-          <button className={styles.remove}></button>
-        </div>
-      </li>
-      <li className={styles.todosItem}>
-        <span className={styles.status}></span>
-        <div className={styles.taskWrapper}>
-          <input className={styles.task} type="text" />
-          <button className={styles.remove}></button>
-        </div>
-      </li>
-      <li className={styles.todosItem}>
-        <span className={styles.status}></span>
-        <div className={styles.taskWrapper}>
-          <input className={styles.task} type="text" />
-          <button className={styles.remove}></button>
-        </div>
-      </li>
+      {data.map((item, i) => {
+        return <Todo key={i} todo={item.todo} completed={item.completed} />;
+      })}
     </ul>
   );
 };
