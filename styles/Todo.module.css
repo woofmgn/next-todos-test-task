@@ -30,10 +30,16 @@
 .task {
   margin-left: 14px;
   border: none;
+  font-size: 20px;
   padding: 0;
   width: 100%;
   background-color: #FFF;
   color: #000;
+}
+
+.taskComplete {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
 .remove {

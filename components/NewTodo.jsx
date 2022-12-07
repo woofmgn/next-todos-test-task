@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "../styles/NewTodo.module.css";
 
-const NewTodo = ({ setData, data, todoStatus, setTodoStatus }) => {
+const NewTodo = ({ setData, data, setTodoStatus }) => {
   const [inputValue, setInputValue] = useState("");
   const [allStatus, setAllStatus] = useState(true);
 
@@ -22,8 +22,6 @@ const NewTodo = ({ setData, data, todoStatus, setTodoStatus }) => {
     localStorage.clear();
     localStorage.setItem("todos", JSON.stringify(newStorage));
   };
-
-  const copyArr = () => {};
 
   const handleToggleAllStatus = () => {
     const arr = data.map((a) => ({ ...a }));

@@ -45,6 +45,15 @@ const Todo = ({ todo, id, completed, glData, setGlData }) => {
     setGlData(newArr);
   };
 
+  const deleteTodo = () => {
+    const arr = glData.map((a) => ({ ...a }));
+    const res = arr.filter((item) => item.id !== id);
+
+    setGlData(res);
+    localStorage.clear();
+    localStorage.setItem("todos", JSON.stringify(res));
+  };
+
   const handleChangeStatus = () => {
     setStTodo((prevState) => !prevState);
   };
@@ -62,8 +71,16 @@ const Todo = ({ todo, id, completed, glData, setGlData }) => {
         onClick={handleChangeStatus}
       ></span>
       <div className={styles.taskWrapper}>
-        <input className={styles.task} type="text" defaultValue={todo} />
-        <button className={styles.remove}></button>
+        <input
+          className={`${styles.task} ${completed ? styles.taskComplete : null}`}
+          type="text"
+          defaultValue={todo}
+        />
+        <button
+          className={styles.remove}
+          type="button"
+          onClick={deleteTodo}
+        ></button>
       </div>
     </li>
   );

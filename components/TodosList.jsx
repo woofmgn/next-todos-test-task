@@ -1,7 +1,7 @@
 import styles from "../styles/TodosList.module.css";
 import Todo from "./Todo";
 
-const TodosList = ({ data, setData, todoStatus, setTodoStatus }) => {
+const TodosList = ({ data, setData }) => {
   return (
     <ul className={styles.todosList}>
       {data.map((item) => {

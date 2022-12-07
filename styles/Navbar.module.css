@@ -38,12 +38,18 @@
 .link {
   margin: 0;
   padding: 0;
+  display: flex;
   text-decoration: none;
   font-family: 'Inter';
   font-size: 14px;
   font-weight: normal;
   text-align: center;
-  /* color: #000; */
+}
+
+.isActive {
+  display: flex;
+  border: 1px solid red;
+  border-radius: 3px;
 }
 
 .deleteTask {

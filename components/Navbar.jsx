@@ -30,7 +30,7 @@ const Navbar = ({ data }) => {
               All
             </Link>
           </li>
-          <li>
+          <li className={styles.links}>
             <Link href="/active" className={styles.link}>
               Active
             </Link>
