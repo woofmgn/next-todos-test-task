@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Todo.module.css";
 
-const Todo = ({ todo, id }) => {
-  const [stTodo, setStTodo] = useState(false);
+const Todo = ({ todo, id, completed }) => {
+  const [stTodo, setStTodo] = useState(completed);
 
   const updateLocalStorage = (status) => {
     let storage = [];
@@ -12,15 +12,18 @@ const Todo = ({ todo, id }) => {
     let newItem = {};
     newStorage = storage.filter((item) => {
       if (item.id === id) {
-        setStTodo(item.completed);
         newItem = {
           ...item,
           completed: status,
         };
       } else {
-        return item.id !== id;
+        return item;
       }
     });
+
+    console.log(storage);
+    console.log(newStorage);
+    console.log(newItem);
 
     localStorage.clear();
     newStorage.push(newItem);
@@ -29,8 +32,11 @@ const Todo = ({ todo, id }) => {
 
   const handleChangeStatus = () => {
     setStTodo((prevState) => !prevState);
-    updateLocalStorage(stTodo);
   };
+
+  useEffect(() => {
+    updateLocalStorage(stTodo);
+  }, [stTodo]);
 
   return (
     <li className={styles.todosItem}>
