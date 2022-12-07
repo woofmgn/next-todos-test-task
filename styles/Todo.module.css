@@ -21,10 +21,10 @@
   display: flex;
   width: 556px;
   position: relative;
-  /* width: 100%; */
 }
 
 .task {
+  margin-left: 14px;
   border: none;
   padding: 0;
   width: 100%;

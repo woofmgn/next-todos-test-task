@@ -8,6 +8,17 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  const [todoStatus, setTodoStatus] = useState(false);
+
+  const checkTodoStatus = () => {
+    let completedTodo = [];
+
+    data.filter((item) => {
+      if (item.completed.true) {
+        return completedTodo.push(item);
+      }
+    });
+  };
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("todos"));
@@ -26,9 +37,14 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.wrapper}>
           <NewTodo setData={setData} data={data} />
-          <TodosList data={data} />
+          <TodosList
+            data={data}
+            setData={setData}
+            todoStatus={todoStatus}
+            setTodoStatus={setTodoStatus}
+          />
         </div>
-        <Navbar />
+        <Navbar data={data} />
       </main>
       <Footer />
     </div>

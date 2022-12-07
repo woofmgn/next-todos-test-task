@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({data}) => {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.counter}>items left</p>
+      <p className={styles.counter}>{data.length} items left</p>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
