@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.isComplete {
+  background-image: url('../public/checkmark-checkbox.svg');
+}
+
 .taskWrapper {
   display: flex;
   width: 556px;

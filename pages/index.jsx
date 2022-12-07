@@ -36,7 +36,12 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.wrapper}>
-          <NewTodo setData={setData} data={data} />
+          <NewTodo
+            setData={setData}
+            data={data}
+            todoStatus={todoStatus}
+            setTodoStatus={setTodoStatus}
+          />
           <TodosList
             data={data}
             setData={setData}

@@ -1,10 +1,28 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styles from "../styles/Navbar.module.css";
 
-const Navbar = ({data}) => {
+const Navbar = ({ data }) => {
+  const [count, setCount] = useState(0);
+
+  const checkCount = () => {
+    const ct = data.filter((item) => {
+      if (item.completed === false) {
+        return item;
+      } else {
+        return;
+      }
+    });
+    return ct.length;
+  };
+
+  useEffect(() => {
+    setCount(checkCount);
+  }, [data]);
+
   return (
     <div className={styles.wrapper}>
-      <p className={styles.counter}>{data.length} items left</p>
+      <p className={styles.counter}>{count} items left</p>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navItem}>

@@ -10,11 +10,9 @@ const TodosList = ({ data, setData, todoStatus, setTodoStatus }) => {
             key={item.id}
             todo={item.todo}
             completed={item.completed}
-            data={item}
             id={item.id}
-            setData={setData}
-            todoStatus={todoStatus}
-            setTodoStatus={setTodoStatus}
+            glData={data}
+            setGlData={setData}
           />
         );
       })}

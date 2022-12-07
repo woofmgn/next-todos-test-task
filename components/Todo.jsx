@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/Todo.module.css";
 
-const Todo = ({ todo, id, completed }) => {
+const Todo = ({ todo, id, completed, glData, setGlData }) => {
   const [stTodo, setStTodo] = useState(completed);
 
   const updateLocalStorage = (status) => {
     let storage = [];
     let newStorage = [];
+    let newItem = {};
+
     storage = JSON.parse(localStorage.getItem("todos")) || [];
 
-    let newItem = {};
     newStorage = storage.filter((item) => {
       if (item.id === id) {
         newItem = {
@@ -21,13 +22,27 @@ const Todo = ({ todo, id, completed }) => {
       }
     });
 
-    console.log(storage);
-    console.log(newStorage);
-    console.log(newItem);
-
     localStorage.clear();
-    newStorage.push(newItem);
+    newStorage.unshift(newItem);
     localStorage.setItem("todos", JSON.stringify(newStorage));
+  };
+
+  const handleChandeData = (status) => {
+    let newArr = [];
+    const arr = glData.map((a) => ({ ...a }));
+    const res = arr.filter((item) => {
+      if (item.id === id) {
+        return item;
+      } else {
+        newArr.push(item);
+      }
+    });
+
+    const a = newArr;
+    const b = res[0];
+    b.completed = status;
+    newArr.unshift(b);
+    setGlData(newArr);
   };
 
   const handleChangeStatus = () => {
@@ -36,11 +51,16 @@ const Todo = ({ todo, id, completed }) => {
 
   useEffect(() => {
     updateLocalStorage(stTodo);
+    handleChandeData(stTodo);
   }, [stTodo]);
 
   return (
     <li className={styles.todosItem}>
-      <span className={styles.status} onClick={handleChangeStatus}></span>
+      <span
+        className={`${styles.status} ${completed ? styles.isComplete : null} 
+        }`}
+        onClick={handleChangeStatus}
+      ></span>
       <div className={styles.taskWrapper}>
         <input className={styles.task} type="text" defaultValue={todo} />
         <button className={styles.remove}></button>

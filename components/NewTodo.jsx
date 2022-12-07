@@ -2,8 +2,38 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "../styles/NewTodo.module.css";
 
-const NewTodo = ({ setData, data }) => {
+const NewTodo = ({ setData, data, todoStatus, setTodoStatus }) => {
   const [inputValue, setInputValue] = useState("");
+  const [allStatus, setAllStatus] = useState(true);
+
+  const toggleStatus = (status) => {
+    let storage = JSON.parse(localStorage.getItem("todos")) || [];
+    let newStorage = [];
+    let newItem = {};
+
+    storage.map((item) => {
+      newItem = {
+        ...item,
+        completed: status,
+      };
+      newStorage.push(newItem);
+    });
+
+    localStorage.clear();
+    localStorage.setItem("todos", JSON.stringify(newStorage));
+  };
+
+  const copyArr = () => {};
+
+  const handleToggleAllStatus = () => {
+    const arr = data.map((a) => ({ ...a }));
+    const newArr = arr.map((item) => ({ ...item, completed: allStatus }));
+
+    setData(newArr);
+    setAllStatus((prev) => !prev);
+    setTodoStatus((prev) => !prev);
+    toggleStatus(allStatus);
+  };
 
   const addItemLocalStorage = (newItem) => {
     let storage = [];
@@ -33,7 +63,11 @@ const NewTodo = ({ setData, data }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.inputWrapper}>
-        <button className={styles.completeAll}></button>
+        <button
+          className={styles.completeAll}
+          type="button"
+          onClick={handleToggleAllStatus}
+        ></button>
         <input
           type="text"
           className={styles.input}
