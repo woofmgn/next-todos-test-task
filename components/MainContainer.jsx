@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Footer from "./Footer";
-import Navbar from "./NavBar";
+import Navbar from "./Navbar";
 import NewTodo from "./NewTodo";
 
 const MainContainer = ({
